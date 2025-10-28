@@ -61,7 +61,7 @@ function App() {
       <Navigation />
       <Hero />
       <About />
-      {/* <Courses /> */}
+      <Courses />
       <Projects />
       <CTA />
       <Footer />
