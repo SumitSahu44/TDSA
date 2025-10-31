@@ -176,10 +176,10 @@ if (innovationImage) {
     ease: 'none', // scrub ke sath best combination for pure scroll-based motion
     scrollTrigger: {
       trigger: innovationRef.current,
-      start: 'top 90%',
+      start: 'top 70%',
       end: 'top 20%',
       scrub: 1.2, // 1.2 = thoda lag smoothness add karta hai
-      // markers: true, // debug ke liye rakh sakta hai
+      markers: true, // debug ke liye rakh sakta hai
     },
   }
 );
