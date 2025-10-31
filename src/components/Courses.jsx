@@ -147,7 +147,7 @@ const Courses = () => {
           {courses.map((course, index) => (
            <div
   key={course.id}
-  className="course-card-container flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[35vw]"
+  className="course-card-container flex-shrink-0 bordr w-[85vw] md:w-[45vw] lg:w-[35vw]"
 >
   <div className="group relative h-[26rem] bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-6 hover:border-white/25 transition-all duration-500 hover:scale-[1.02] shadow-xl shadow-black/20">
     {/* Subtle glow sweep */}

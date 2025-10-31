@@ -166,7 +166,7 @@ gsap.fromTo(
       {/* Hero Section */}
       <div ref={heroRef} className="relative z-10 pt-32 pb-20">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-7xl md:text-9xl font-black mb-8 text-white leading-none">
+          <h1 className="text-5xl md:text-9xl font-black mb-8 text-white leading-none">
             {splitText("REDEFINING")}
           </h1>
         <h2 className="text-6xl md:text-8xl font-black mb-12">
@@ -331,7 +331,7 @@ gsap.fromTo(
         </div>
       </div>
 
-<div className="h-screen flex items-center justify-center">
+<div className="h-[300px] flex items-center justify-center">
      <ScrollVelocity
   texts={['The Data Science Academy', 'Academy of the Future']} 
   // velocity={velocity} 
