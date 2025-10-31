@@ -126,11 +126,66 @@ gsap.fromTo(
         },
       });
 
+
+
+
+      // Innovation image scroll animation
+const innovationImage = innovationRef.current?.querySelector('.innovation-image-wrapper');
+
+if (innovationImage) {
+  gsap.fromTo(
+    innovationImage,
+    {
+      width: '90%',
+      y: 100,
+      opacity: 0,
+    },
+    {
+      width: '100%',
+      y: 0,
+      opacity: 1,
+      duration: 1.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: innovationRef.current,
+        start: "top 60%",        // 60% se start
+        end: "top 30%",          // end when top of section hits 30% of viewport
+        scrub: 1.5,              // smooth scrubbing
+        // toggleActions: "play reverse play reverse", // optional
+      },
+    }
+  );
+}
+
+
+
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+// Innovation image scroll animation
+const innovationImage = innovationRef.current?.querySelector('.innovation-image-wrapper');
+if (innovationImage) {
+ gsap.fromTo(
+  innovationImage,
+  { width: '60%', y: 80, opacity: 1 },
+  {
+    width: '90%',
+    y: 0,
+    opacity: 1,
+    ease: 'none', // scrub ke sath best combination for pure scroll-based motion
+    scrollTrigger: {
+      trigger: innovationRef.current,
+      start: 'top 90%',
+      end: 'top 20%',
+      scrub: 1.2, // 1.2 = thoda lag smoothness add karta hai
+      // markers: true, // debug ke liye rakh sakta hai
+    },
+  }
+);
 
+
+}
   const splitText = (text) => {
     return text.split("").map((char, i) => (
       <span key={i} className="hero-char inline-block">
@@ -190,26 +245,24 @@ gsap.fromTo(
       </div>
 
       {/* Innovation Sphere */}
-      <div ref={innovationRef} className="relative z-10 py-20">
-        <div className="container mx-auto px-6">
-          <div className="flex justify-center">
-            <div className="innovation-sphere relative w-64 h-64 rounded-full border-4 border-white/20 backdrop-blur-lg">
-              {/* Concentric circles */}
-              <div className="absolute inset-8 rounded-full border-2 border-white/30 animate-pulse"></div>
-              <div className="absolute inset-16 rounded-full border border-white/40 animate-pulse delay-1000"></div>
-              
-              {/* Floating elements inside sphere */}
-              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full bg-white/60"></div>
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full bg-white/60"></div>
-              <div className="absolute top-1/2 left-4 transform -translate-y-1/2 w-3 h-3 rounded-full bg-white/60"></div>
-              <div className="absolute top-1/2 right-4 transform -translate-y-1/2 w-3 h-3 rounded-full bg-white/60"></div>
-              
-              {/* Center glow */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#D22D1E]/20 via-[#963AB0]/20 to-[#20469B]/20 blur-lg"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+   {/* Innovation Image Section */}
+{/* Innovation Image Section with Scroll Animation */}
+<div ref={innovationRef} className="relative z-10 py-20 pt-0">
+  <div className="container mx-auto px-6 flex justify-center">
+    <div 
+      className="innovation-image-wrapper w-[90%] sm:w-[90%] rounded-3xl overflow-hidden shadow-2xl border border-white/20"
+      style={{ transform: 'translateY(100px)', opacity: 0 }} // initial state
+    >
+      <img
+        src="/images/innovation-lab.jpeg"
+        alt="Innovation at The Data Science Academy"
+        className="w-full h-auto object-cover block"
+        style={{ borderRadius: "1.5rem" }}
+      />
+    </div>
+  </div>
+</div>
+
 
       {/* Timeline Section */}
       <div ref={timelineRef} className="relative z-10 py-20">
