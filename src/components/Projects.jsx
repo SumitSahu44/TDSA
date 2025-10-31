@@ -34,10 +34,10 @@ const Projects = () => {
   ];
 
   const stats = [
-    { icon: FaChartLine, value: "80%", label: "Scholarships Awarded", color: "from-cyan-500 to-blue-500" },
-    { icon: FaUsers, value: "100%", label: "Placement Assistance", color: "from-teal-500 to-cyan-500" },
-    { icon: FaRocket, value: "500+", label: "Projects Completed", color: "from-blue-500 to-purple-500" },
-    { icon: FaAward, value: "94%", label: "Success Rate", color: "from-purple-500 to-pink-500" },
+    { icon: FaChartLine, value: "80%", label: "Scholarships Awarded" },
+    { icon: FaUsers, value: "100%", label: "Placement Assistance" },
+    { icon: FaRocket, value: "500+", label: "Projects Completed" },
+    { icon: FaAward, value: "94%", label: "Success Rate" },
   ];
 
   useEffect(() => {
@@ -107,7 +107,7 @@ const Projects = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Projects Carousel */}
           <div ref={leftRef} className="space-y-8">
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+            <h2 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent animate-pulse">
               Hands-on Projects
             </h2>
 
@@ -119,25 +119,30 @@ const Projects = () => {
                     index === currentProject ? 'opacity-100' : 'opacity-0'
                   }`}
                 >
-                  <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-500">
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-300 mb-6">{project.description}</p>
+                  <div className="group relative bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl border border-white/15 rounded-3xl p-8 h-full hover:border-white/25 transition-all duration-500 shadow-2xl shadow-black/30">
+                    {/* Shine Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent transform -skew-x-12 translate-x-[-150%] group-hover:translate-x-[150%] transition-all duration-1000 rounded-3xl"></div>
+                    
+                    <div className="relative z-10 h-full flex flex-col">
+                      <h3 className="text-2xl font-bold text-white mb-4">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-300 mb-6 flex-grow">{project.description}</p>
 
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm border border-cyan-500/30"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tech.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-3 py-1 bg-white/10 text-gray-200 rounded-full text-sm border border-white/15"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
 
-                    <div className="text-cyan-400 font-bold text-lg">
-                      {project.metrics}
+                      <div className="text-white font-bold text-lg bg-white/10 px-4 py-2 rounded-xl border border-white/15 inline-block self-start">
+                        {project.metrics}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -150,7 +155,7 @@ const Projects = () => {
                   key={index}
                   onClick={() => setCurrentProject(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentProject ? 'bg-cyan-400' : 'bg-gray-600'
+                    index === currentProject ? 'bg-white' : 'bg-gray-600'
                   }`}
                 />
               ))}
@@ -159,32 +164,30 @@ const Projects = () => {
 
           {/* Right Side - Career Stats */}
           <div ref={rightRef} className="space-y-8">
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent animate-pulse">
               Career Success
             </h2>
 
             <div className="space-y-6">
               {stats.map((stat, index) => (
-                <div key={index} className="space-y-3">
+                <div key={index} className="group space-y-3">
                   <div className="flex justify-between items-center">
                     <div className="flex items-center space-x-3">
-                      <div
-                        className={`p-2 rounded-lg bg-gradient-to-r ${stat.color}`}
-                      >
+                      <div className="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 group-hover:bg-white/15 transition-all duration-300">
                         <stat.icon className="text-white text-lg" />
                       </div>
-                      <span className="text-white font-semibold">
+                      <span className="text-white font-semibold text-lg">
                         {stat.label}
                       </span>
                     </div>
-                    <span className="text-cyan-400 font-bold text-xl">
+                    <span className="text-white font-bold text-2xl">
                       {stat.value}
                     </span>
                   </div>
 
                   <div className="w-full bg-white/10 rounded-full h-2">
                     <div
-                      className={`progress-bar-${index} h-2 rounded-full bg-gradient-to-r ${stat.color} transition-all duration-1000`}
+                      className={`progress-bar-${index} h-2 rounded-full bg-gradient-to-r from-[#0a1569] to-[#1e40af] transition-all duration-1000`}
                       style={{ width: '0%' }}
                     ></div>
                   </div>
@@ -192,8 +195,9 @@ const Projects = () => {
               ))}
             </div>
 
-            <button className="w-full py-4 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl text-white font-bold text-lg hover:shadow-xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-1">
-              Start Your Journey Today
+            <button className="relative w-full py-4 bg-gradient-to-r from-[#0a1569] to-[#1e40af] rounded-xl text-white font-bold text-lg hover:from-[#1e40af] hover:to-[#0a1569] transition-all duration-300 transform hover:-translate-y-1 shadow-2xl shadow-blue-900/30 hover:shadow-blue-900/50 group/btn overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-all duration-700"></div>
+              <span className="relative">Start Your Journey Today</span>
             </button>
           </div>
         </div>
