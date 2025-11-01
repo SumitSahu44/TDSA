@@ -265,39 +265,107 @@ if (innovationImage) {
 
 
       {/* Timeline Section */}
-      <div ref={timelineRef} className="relative z-10 py-20">
+     {/* Timeline Section - Premium Version */}
+      <div ref={timelineRef} className="relative z-10 py-32">
         <div className="container mx-auto px-6">
-         <h3 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-center mb-16 tracking-wide">
-  OUR{" "}
-  <span
-    className="text-transparent bg-clip-text"
-    style={{
-      background:
-        "linear-gradient(90deg, #D22D1E 30%, #963AB0 60%, #20469B 100%)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-    }}
-  >
-    JOURNEY
-  </span>
-</h3>
+          <h3 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-center mb-24 tracking-wide">
+            OUR{" "}
+            <span
+              className="text-transparent bg-clip-text"
+              style={{
+                background: "linear-gradient(90deg, #D22D1E 30%, #963AB0 60%, #20469B 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              JOURNEY
+            </span>
+          </h3>
 
-          
-          <div className="max-w-6xl mx-auto">
+          {/* Vertical Timeline with Connecting Line */}
+          <div className="max-w-5xl mx-auto relative">
+            {/* Animated vertical line */}
+            <div className="timeline-line absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#D22D1E] via-[#963AB0] to-[#20469B] opacity-30 transform md:-translate-x-1/2"></div>
+            
             {[
-              { year: "2020", title: "Foundation", desc: "Started with a vision to transform data science education" },
-              { year: "2021", title: "Growth", desc: "Expanded to 10,000+ students across 50+ countries" },
-              { year: "2022", title: "Innovation", desc: "Launched AI-powered learning platform" },
-              { year: "2023", title: "Excellence", desc: "Achieved 95% career success rate" },
-              { year: "2024", title: "Future", desc: "Pioneering next-gen AI curriculum" },
+              { 
+                year: "2020", 
+                title: "Foundation", 
+                desc: "Started with a vision to transform data science education",
+                gradient: "from-[#D22D1E]/20 to-[#D22D1E]/5"
+              },
+              { 
+                year: "2021", 
+                title: "Growth", 
+                desc: "Expanded to 10,000+ students across 50+ countries",
+                gradient: "from-[#963AB0]/20 to-[#963AB0]/5"
+              },
+              { 
+                year: "2022", 
+                title: "Innovation", 
+                desc: "Launched AI-powered learning platform",
+                gradient: "from-[#20469B]/20 to-[#20469B]/5"
+              },
+              { 
+                year: "2023", 
+                title: "Excellence", 
+                desc: "Achieved 95% career success rate",
+                gradient: "from-[#D22D1E]/20 to-[#963AB0]/5"
+              },
+              { 
+                year: "2024", 
+                title: "Future", 
+                desc: "Pioneering next-gen AI curriculum",
+                gradient: "from-[#963AB0]/20 to-[#20469B]/5"
+              },
             ].map((item, index) => (
-              <div key={index} className="timeline-item flex items-start space-x-8 mb-12 last:mb-0">
-                <div className="flex-shrink-0 w-24 h-24 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 flex items-center justify-center backdrop-blur-lg">
-                  <span className="text-2xl font-black text-white">{item.year}</span>
-                </div>
-                <div className="flex-1 pt-2">
-                  <h4 className="text-3xl font-black text-white mb-3">{item.title}</h4>
-                  <p className="text-lg text-gray-300 leading-relaxed">{item.desc}</p>
+              <div 
+                key={index} 
+                className={`timeline-item relative mb-24 last:mb-0 ${
+                  index % 2 === 0 ? 'md:pr-[50%] md:pl-0' : 'md:pl-[50%] md:pr-0'
+                }`}
+              >
+                {/* Timeline dot */}
+                <div className={`timeline-dot absolute left-8 md:left-1/2 top-8 w-6 h-6 rounded-full transform md:-translate-x-1/2 z-10 border-4 border-[#151316] ${
+                  index === 0 ? 'bg-[#D22D1E]' :
+                  index === 1 ? 'bg-[#963AB0]' :
+                  index === 2 ? 'bg-[#20469B]' :
+                  index === 3 ? 'bg-[#D22D1E]' : 'bg-[#963AB0]'
+                } shadow-lg shadow-white/20`}></div>
+
+                {/* Content card */}
+                <div className={`ml-20 md:ml-0 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}>
+                  <div className={`group relative p-8 rounded-3xl bg-gradient-to-br ${item.gradient} backdrop-blur-xl border border-white/10 hover:border-white/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden`}>
+                    {/* Animated gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-1000"></div>
+                    
+                    <div className="relative z-10">
+                      {/* Year badge */}
+                      <div className="inline-block mb-4 px-6 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
+                        <span className="text-3xl font-black bg-clip-text text-transparent" style={{
+                          backgroundImage: "linear-gradient(90deg, #D22D1E 37.08%, #963AB0 62.26%, #20469B 99.82%)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                        }}>
+                          {item.year}
+                        </span>
+                      </div>
+                      
+                      <h4 className="text-4xl font-black text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300" style={{
+                        backgroundImage: "linear-gradient(90deg, #D22D1E 37.08%, #963AB0 62.26%, #20469B 99.82%)",
+                      }}>
+                        {item.title}
+                      </h4>
+                      
+                      <p className="text-lg text-gray-300 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    {/* Decorative corner elements */}
+                    <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-white/10 rounded-tr-3xl"></div>
+                    <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-white/10 rounded-bl-3xl"></div>
+                  </div>
                 </div>
               </div>
             ))}
