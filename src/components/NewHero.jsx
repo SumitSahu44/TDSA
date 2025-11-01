@@ -4,6 +4,7 @@ import { SplitText } from "gsap/SplitText";
 import { FaChevronDown } from "react-icons/fa";
 import LightRays from "./LightRays";
 import Navigation from './Navigation';
+
 gsap.registerPlugin(SplitText);
 
 const NewHero = () => {
@@ -55,12 +56,14 @@ const NewHero = () => {
   }, []);
 
   return (
-   <section className="relative flex items-center justify-center min-h-screen overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden bg-[#151316]">
+      {/* ✅ Navbar fixed on top */}
+      <div className="absolute top-0 left-0 w-full z-20">
+        <Navigation />
+      </div>
 
-      {/* Base Background */}
+      {/* Background Layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#151316] to-[#1a181b]" />
-
-      {/* Light Rays Animation - extended to bottom */}
       <div className="absolute inset-0 scale-125">
         <LightRays
           raysOrigin="top-center"
@@ -75,8 +78,6 @@ const NewHero = () => {
           className="custom-rays"
         />
       </div>
-
-      {/* Overlay for Depth */}
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -85,33 +86,20 @@ const NewHero = () => {
         }}
       ></div>
 
-      {/* Text Section */}
-      <div className="relative z-10 text-center px-6">
-    <h1
-  ref={textRef}
-  className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 text-white leading-tight"
->
-  The{" "}
-  <span
-    className="inline-block"
-    // style={{
-    //   background:
-    //     "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
-    //   WebkitBackgroundClip: "text",
-    //   WebkitTextFillColor: "transparent",
-    //   backgroundClip: "text",
-    //   filter: "drop-shadow(0 0 12px rgba(150,58,176,0.8))",
-    // }}
-  >
-    Data Science
-  </span>{" "}
-  Academy
-  <br />
-  <span className="block mt-4 text-lg sm:text-2xl md:text-3xl font-light italic tracking-wide text-white/90">
-    May these lights guide you <br /> on your path
-  </span>
-</h1>
-
+      {/* ✅ Hero Content Centered Vertically */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-6 pt-24">
+        <h1
+          ref={textRef}
+          className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 text-white leading-tight"
+        >
+          {" "}
+          <span className="inline-block">
+            May these lights guide you,
+          </span>{" "} <br />
+          on your path
+         
+          
+        </h1>
 
         <p className="hero-subtext text-lg sm:text-xl md:text-2xl text-white opacity-0 translate-y-3 font-light">
           Shaping the{" "}
@@ -131,7 +119,6 @@ const NewHero = () => {
           of Data Science Education
         </p>
 
-        {/* Buttons */}
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center hero-subtext opacity-0 translate-y-3">
           <button
             className="px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(150,58,176,0.8)]"
@@ -145,7 +132,6 @@ const NewHero = () => {
           </button>
           <button className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-white text-white hover:bg-white hover:text-[#151316] transition-all duration-300 transform hover:-translate-y-1">
             View Courses
-            
           </button>
         </div>
       </div>
@@ -167,7 +153,6 @@ const NewHero = () => {
         </div>
       </div>
     </section>
-    
   );
 };
 
