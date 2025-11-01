@@ -56,6 +56,46 @@ const AboutUs = () => {
           },
         }
       );
+// Timeline animation - Scroll based progressive reveal
+gsap.utils.toArray(".timeline-item").forEach((item, i) => {
+  gsap.fromTo(
+    item,
+    {
+      opacity: 0,
+      y: 100,
+      scale: 0.9,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: item,
+        start: "top 85%", // starts when item enters viewport
+        end: "top 40%", // ends at mid viewport
+        scrub: 1.2, // scrub creates smooth scroll-based animation
+      },
+    }
+  );
+});
+
+// Timeline line fill animation (scroll-based)
+gsap.fromTo(
+  ".timeline-line",
+  { scaleY: 0, transformOrigin: "top center" },
+  {
+    scaleY: 1,
+    ease: "none",
+    scrollTrigger: {
+      trigger: timelineRef.current,
+      start: "top 80%",
+      end: "bottom 20%",
+      scrub: true,
+    },
+  }
+);
 
       // Values cards animation
    // Values cards animation (trigger earlier & faster)
@@ -351,12 +391,14 @@ if (innovationImage) {
                         </span>
                       </div>
                       
-                      <h4 className="text-4xl font-black text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300" style={{
-                        backgroundImage: "linear-gradient(90deg, #D22D1E 37.08%, #963AB0 62.26%, #20469B 99.82%)",
-                      }}>
-                        {item.title}
-                      </h4>
-                      
+                    <h4
+  className="text-4xl font-black text-white mb-4 transition-all duration-300 
+             group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r 
+             group-hover:from-[#D22D1E] group-hover:via-[#963AB0] group-hover:to-[#20469B]"
+>
+  {item.title}
+</h4>
+
                       <p className="text-lg text-gray-300 leading-relaxed">
                         {item.desc}
                       </p>
