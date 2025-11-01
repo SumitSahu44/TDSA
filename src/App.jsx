@@ -25,7 +25,8 @@ function App() {
   return (
     <div className="app bg-navy-900 text-white">
       
-      {/* <Navigation/> */}
+       {/* <Navigation/> */}
+     
       <NewHero />
       {/* <Hero /> */}
       <About/>

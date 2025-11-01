@@ -168,7 +168,7 @@ const innovationImage = innovationRef.current?.querySelector('.innovation-image-
 if (innovationImage) {
  gsap.fromTo(
   innovationImage,
-  { width: '60%', y: 80, opacity: 1 },
+  { width: '50%', y: 80, opacity: 1 },
   {
     width: '90%',
     y: 0,
@@ -176,7 +176,7 @@ if (innovationImage) {
     ease: 'none', // scrub ke sath best combination for pure scroll-based motion
     scrollTrigger: {
       trigger: innovationRef.current,
-      start: 'top 70%',
+      start: 'top 80%',
       end: 'top 20%',
       scrub: 1.2, // 1.2 = thoda lag smoothness add karta hai
       markers: true, // debug ke liye rakh sakta hai
