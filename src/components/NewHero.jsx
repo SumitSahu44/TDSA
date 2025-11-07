@@ -11,49 +11,53 @@ const NewHero = () => {
   const textRef = useRef(null);
   const scrollIndicatorRef = useRef(null);
 
-  useEffect(() => {
-    const split = new SplitText(textRef.current, {
-      type: "chars,words,lines",
-      linesClass: "split-line",
-    });
+useEffect(() => {
+  const split = new SplitText(textRef.current, {
+    type: "chars,words,lines",
+    linesClass: "split-line",
+  });
 
-    const tl = gsap.timeline({ defaults: { ease: "back.out(1.7)" } });
+  const tl = gsap.timeline({ defaults: { ease: "back.out(1.7)" } });
 
-    tl.fromTo(
-      split.chars,
-      { opacity: 0, y: 80, rotationX: 90, scale: 0.8 },
-      {
-        opacity: 1,
-        y: 0,
-        rotationX: 0,
-        scale: 1,
-        stagger: 0.04,
-        duration: 1.2,
-      }
-    );
+  // 🧠 Faster character animation
+  tl.fromTo(
+    split.chars,
+    { opacity: 0, y: 80, rotationX: 90, scale: 0.8 },
+    {
+      opacity: 1,
+      y: 0,
+      rotationX: 0,
+      scale: 1,
+      stagger: 0.025, // faster stagger (was 0.04)
+      duration: 0.8,  // faster duration (was 1.2)
+    }
+  );
 
-    tl.to(
-      ".hero-subtext",
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-      },
-      "-=0.5"
-    );
+  // Subtext appear faster
+  tl.to(
+    ".hero-subtext",
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.7, // was 1
+      ease: "power2.out",
+    },
+    "-=0.3" // appear sooner (was -=0.5)
+  );
 
-    tl.fromTo(
-      scrollIndicatorRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1 },
-      "-=0.3"
-    );
+  // Scroll indicator faster too
+  tl.fromTo(
+    scrollIndicatorRef.current,
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.6 }, // was 1
+    "-=0.2"
+  );
 
-    return () => {
-      split.revert();
-    };
-  }, []);
+  return () => {
+    split.revert();
+  };
+}, []);
+
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#151316]">
