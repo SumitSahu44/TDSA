@@ -1,81 +1,159 @@
-import React from 'react';
-import { FaTwitter, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import React from "react";
+import {
+  FaLinkedinIn,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa";
 
 const Footer = () => {
-return (
-<footer className="bg-[#151316] border-t border-white/10 text-gray-300 relative overflow-hidden" data-scroll-section >
-{/* Subtle gradient overlay */}
-<div className="absolute inset-0 bg-gradient-to-t from-[#1a181b] via-transparent to-transparent opacity-70"></div>
+  return (
+    <footer className="bg-[#151316] text-gray-300 pt-5 pb-15 relative overflow-hidden border-t border-white/10">
+      {/* Gradient background shimmer */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#151316] via-[#1a181b] to-[#151316]" />
+      <div className="relative container mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 z-10">
+        {/* Company Info */}
+        <div>
+          <h2 className="text-2xl font-extrabold text-white mb-4 tracking-wide">
+            The Data Science Academy
+          </h2>
+          <p className="text-gray-400 mb-6 leading-relaxed">
+            Empowering Students through innovation, data, and intelligence.
+            Join us in redefining digital transformation.
+          </p>
+          <div className="flex space-x-4 mt-4">
+            <a
+              href="#"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 hover:border-[#963AB0] hover:text-[#963AB0] transition-all"
+            >
+              <FaLinkedinIn />
+            </a>
+            <a
+              href="#"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 hover:border-[#20469B] hover:text-[#20469B] transition-all"
+            >
+              <FaTwitter />
+            </a>
+            <a
+              href="#"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 hover:border-[#D22D1E] hover:text-[#D22D1E] transition-all"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="#"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 hover:border-[#963AB0] hover:text-[#963AB0] transition-all"
+            >
+              <FaYoutube />
+            </a>
+          </div>
+        </div>
 
-  <div className="container mx-auto px-6 py-14 relative z-10">
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-      
-      {/* Brand Section */}
-      <div className="md:col-span-2">
-        <h3 className="text-3xl font-bold bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent mb-4">
-          The Data Science Academy
-        </h3>
-        <p className="text-gray-400 leading-relaxed max-w-md">
-          Empowering learners to master data science through hands-on training, mentorship, and real-world projects that make an impact.
-        </p>
-      </div>
-
-      {/* Quick Links */}
-      <div>
-        <h4 className="text-white font-semibold mb-4 tracking-wide uppercase text-sm">
-          Quick Links
-        </h4>
-        <ul className="space-y-2">
-          {['About', 'Courses', 'Projects', 'Careers', 'Contact'].map((item) => (
-            <li key={item}>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors duration-300"
-              >
-                {item}
+        {/* Company Links */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-4 border-b border-white/10 pb-2">
+            Company
+          </h3>
+          <ul className="space-y-3">
+            <li>
+              <a href="#" className="hover:text-[#963AB0] transition-all">
+                About Us
               </a>
             </li>
-          ))}
-        </ul>
-      </div>
+            <li>
+              <a href="#" className="hover:text-[#963AB0] transition-all">
+                Our Team
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-[#963AB0] transition-all">
+                Careers
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-[#963AB0] transition-all">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
 
-      {/* Connect Section */}
-      <div>
-        <h4 className="text-white font-semibold mb-4 tracking-wide uppercase text-sm">
-          Connect
-        </h4>
-        <div className="flex space-x-4">
-          {[
-            { icon: FaTwitter, link: '#' },
-            { icon: FaLinkedin, link: '#' },
-            { icon: FaGithub, link: '#' },
-            { icon: FaEnvelope, link: '#' },
-          ].map(({ icon: Icon, link }, index) => (
-            <a
-              key={index}
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 bg-[#1a181b]/70 text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105"
-            >
-              <Icon size={18} />
-            </a>
-          ))}
+        {/* Courses */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-4 border-b border-white/10 pb-2">
+            Courses
+          </h3>
+          <ul className="space-y-3">
+            <li>
+              <a href="#" className="hover:text-[#D22D1E] transition-all">
+                Data Science
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-[#D22D1E] transition-all">
+                Data Engineering
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-[#D22D1E] transition-all">
+                Machine Learning
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-[#D22D1E] transition-all">
+                AI & Visualization
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Policies */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-4 border-b border-white/10 pb-2">
+            Policies
+          </h3>
+          <ul className="space-y-3">
+            <li>
+              <a href="#" className="hover:text-[#20469B] transition-all">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-[#20469B] transition-all">
+                Terms of Service
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-[#20469B] transition-all">
+                Refund Policy
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-[#20469B] transition-all">
+                Cookie Policy
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
 
-    {/* Divider */}
-    <div className="border-t border-white/10 mt-10 pt-8 text-center">
-      <p className="text-gray-500 text-sm">
-        © 2025 The Data Science Academy. All rights reserved.
-      </p>
-    </div>
-  </div>
-</footer>
-
-
-);
+      {/* Divider & Copyright */}
+      <div className="border-t border-white/10 mt-8 pt-6 text-center text-lg text-gray-500 relative z-10">
+        © {new Date().getFullYear()} TDSA. All Rights Reserved. | Design & Developed By{" "}
+        <span
+          className="text-transparent  bg-clip-text"
+          style={{
+            background:
+              "linear-gradient(90deg, #D22D1E 30%, #963AB0 60%, #20469B 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          ❤️ Digital Success Solutions
+        </span>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

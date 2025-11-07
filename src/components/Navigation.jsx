@@ -16,13 +16,17 @@ const Navbar = () => {
       <nav className="relative z-50 bg-transparent">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+            {/* Logo - Clean White Version */}
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D22D1E] via-[#963AB0] to-[#20469B] flex items-center justify-center">
-               <img src="./images/tdsalogo-wbg.png" alt="" srcset="" />
+              <div className="w-10 h-10 rounded-xlflex items-center justify-center">
+                <img 
+                  src="./images/tdsalogo-wbg.png" 
+                  alt="The DataScience Academy Logo" 
+                  className="w-14 object-contain mt-0"
+                />
               </div>
               <span className="text-white font-bold text-xl tracking-tight">
-                The DataScience<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D22D1E] to-[#963AB0]"> Academy</span>
+                The DataScience<span className="text-white"><br/> Academy</span>
               </span>
             </div>
 

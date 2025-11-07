@@ -9,6 +9,7 @@ const CTA = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',   // ✅ added phone field
     interest: ''
   });
 
@@ -61,13 +62,13 @@ const CTA = () => {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen relative flex items-center justify-center overflow-hidden bg-[#151316]"
+      className="min-h-screen relative flex items-center pb-15 pt-15 justify-center overflow-hidden bg-[#151316]"
       data-scroll-section
     >
       {/* Gradient background overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#151316] via-[#1a181b] to-[#151316]"></div>
 
-      {/* Floating particles with soft gradient glow */}
+      {/* Floating particles */}
       {[...Array(25)].map((_, i) => (
         <div
           key={i}
@@ -83,20 +84,20 @@ const CTA = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-         <h3 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-center mb-16 tracking-wide">
-  Join Us{" "}
-  <span
-    className="text-transparent bg-clip-text"
-    style={{
-      background:
-        "linear-gradient(90deg, #D22D1E 30%, #963AB0 60%, #20469B 100%)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-    }}
-  >
-    Today
-  </span>
-</h3>
+          <h3 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-center mb-16 tracking-wide">
+            Join Us{' '}
+            <span
+              className="text-transparent bg-clip-text"
+              style={{
+                background:
+                  'linear-gradient(90deg, #D22D1E 30%, #963AB0 60%, #20469B 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Today
+            </span>
+          </h3>
 
           <p className="text-lg md:text-2xl text-gray-300 mb-12">
             Start your Data Science journey and transform your career in 2025
@@ -109,6 +110,7 @@ const CTA = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Full Name */}
                 <div className="space-y-2 text-left">
                   <label className="text-gray-300 text-sm font-semibold">
                     Full Name
@@ -124,6 +126,7 @@ const CTA = () => {
                   />
                 </div>
 
+                {/* Email Address */}
                 <div className="space-y-2 text-left">
                   <label className="text-gray-300 text-sm font-semibold">
                     Email Address
@@ -140,6 +143,23 @@ const CTA = () => {
                 </div>
               </div>
 
+              {/* ✅ Phone Number Field */}
+              <div className="space-y-2 text-left">
+                <label className="text-gray-300 text-sm font-semibold">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-[#151316] border border-white/15 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#D22D1E]/50 focus:shadow-[0_0_10px_#D22D1E] transition-all duration-300"
+                  placeholder="Enter your phone number"
+                  required
+                />
+              </div>
+
+              {/* Area of Interest */}
               <div className="space-y-2 text-left">
                 <label className="text-gray-300 text-sm font-semibold">
                   Area of Interest
@@ -159,7 +179,7 @@ const CTA = () => {
                 </select>
               </div>
 
-              {/* Gradient Button */}
+              {/* Submit Button */}
               <button
                 type="submit"
                 className="relative w-full py-4 rounded-xl text-white font-semibold text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg group overflow-hidden border border-white/15"
@@ -176,7 +196,7 @@ const CTA = () => {
               </button>
             </form>
 
-            {/* Success Features */}
+            {/* Features */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-12 border-t border-white/10">
               {['No upfront cost', 'Flexible schedule', '1:1 Mentor Support'].map(
                 (feature, index) => (

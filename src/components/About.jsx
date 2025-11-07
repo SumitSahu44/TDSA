@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollVelocity from './ScrollVelocity';
+import Journey from "./Journey";
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutUs = () => {
@@ -170,32 +171,32 @@ gsap.fromTo(
 
 
       // Innovation image scroll animation
-const innovationImage = innovationRef.current?.querySelector('.innovation-image-wrapper');
+// const innovationImage = innovationRef.current?.querySelector('.innovation-image-wrapper');
 
-if (innovationImage) {
-  gsap.fromTo(
-    innovationImage,
-    {
-      width: '90%',
-      y: 100,
-      opacity: 0,
-    },
-    {
-      width: '100%',
-      y: 0,
-      opacity: 1,
-      duration: 1.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: innovationRef.current,
-        start: "top 60%",        // 60% se start
-        end: "top 30%",          // end when top of section hits 30% of viewport
-        scrub: 1.5,              // smooth scrubbing
-        // toggleActions: "play reverse play reverse", // optional
-      },
-    }
-  );
-}
+// if (innovationImage) {
+//   gsap.fromTo(
+//     innovationImage,
+//     {
+//       width: '90%',
+//       y: 100,
+//       opacity: 0,
+//     },
+//     {
+//       width: '100%',
+//       y: 0,
+//       opacity: 1,
+//       duration: 1.8,
+//       ease: "power3.out",
+//       scrollTrigger: {
+//         trigger: innovationRef.current,
+//         start: "top 60%",        // 60% se start
+//         end: "top 30%",          // end when top of section hits 30% of viewport
+//         scrub: 1.5,              // smooth scrubbing
+//         // toggleActions: "play reverse play reverse", // optional
+//       },
+//     }
+//   );
+// }
 
 
 
@@ -204,28 +205,28 @@ if (innovationImage) {
     return () => ctx.revert();
   }, []);
 // Innovation image scroll animation
-const innovationImage = innovationRef.current?.querySelector('.innovation-image-wrapper');
-if (innovationImage) {
- gsap.fromTo(
-  innovationImage,
-  { width: '50%', y: 80, opacity: 1 },
-  {
-    width: '90%',
-    y: 0,
-    opacity: 1,
-    ease: 'none', // scrub ke sath best combination for pure scroll-based motion
-    scrollTrigger: {
-      trigger: innovationRef.current,
-      start: 'top 80%',
-      end: 'top 20%',
-      scrub: 1.2, // 1.2 = thoda lag smoothness add karta hai
-      markers: true, // debug ke liye rakh sakta hai
-    },
-  }
-);
+// const innovationImage = innovationRef.current?.querySelector('.innovation-image-wrapper');
+// if (innovationImage) {
+//  gsap.fromTo(
+//   innovationImage,
+//   { width: '50%', y: 80, opacity: 1 },
+//   {
+//     width: '90%',
+//     y: 0,
+//     opacity: 1,
+//     ease: 'none', // scrub ke sath best combination for pure scroll-based motion
+//     scrollTrigger: {
+//       trigger: innovationRef.current,
+//       start: 'top 80%',
+//       end: 'top 20%',
+//       scrub: 1.2, // 1.2 = thoda lag smoothness add karta hai
+//       markers: true, // debug ke liye rakh sakta hai
+//     },
+//   }
+// );
 
 
-}
+// }
   const splitText = (text) => {
     return text.split("").map((char, i) => (
       <span key={i} className="hero-char inline-block">
@@ -287,7 +288,7 @@ if (innovationImage) {
       {/* Innovation Sphere */}
    {/* Innovation Image Section */}
 {/* Innovation Image Section with Scroll Animation */}
-<div ref={innovationRef} className="relative z-10 py-20 pt-0">
+{/* <div ref={innovationRef} className="relative z-10 py-20 pt-0">
   <div className="container mx-auto px-6 flex justify-center">
     <div 
       className="innovation-image-wrapper w-[90%] sm:w-[90%] rounded-3xl overflow-hidden shadow-2xl border border-white/20"
@@ -301,12 +302,30 @@ if (innovationImage) {
       />
     </div>
   </div>
+</div> */}
+
+
+{/* Innovation Image Section - Static (No Animation) */}
+<div ref={innovationRef} className="relative z-10 py-20 pt-0">
+  <div className="container mx-auto px-6 flex justify-center">
+    <div 
+      className="innovation-image-wrapper w-[90%] sm:w-[90%] rounded-3xl overflow-hidden shadow-2xl border border-white/20"
+    >
+      <img
+        src="/images/innovation-lab.jpeg"
+        alt="Innovation at The Data Science Academy"
+        className="w-full h-auto object-cover block"
+        style={{ borderRadius: "1.5rem" }}
+      />
+    </div>
+  </div>
 </div>
+
 
 
       {/* Timeline Section */}
      {/* Timeline Section - Premium Version */}
-      <div ref={timelineRef} className="relative z-10 py-32">
+      {/* <div ref={timelineRef} className="relative z-10 py-32">
         <div className="container mx-auto px-6">
           <h3 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-center mb-24 tracking-wide">
             OUR{" "}
@@ -320,14 +339,14 @@ if (innovationImage) {
             >
               JOURNEY
             </span>
-          </h3>
+          </h3> */}
 
           {/* Vertical Timeline with Connecting Line */}
-          <div className="max-w-5xl mx-auto relative">
+          {/* <div className="max-w-5xl mx-auto relative"> */}
             {/* Animated vertical line */}
-            <div className="timeline-line absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#D22D1E] via-[#963AB0] to-[#20469B] opacity-30 transform md:-translate-x-1/2"></div>
+            {/* <div className="timeline-line absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#D22D1E] via-[#963AB0] to-[#20469B] opacity-30 transform md:-translate-x-1/2"></div> */}
             
-            {[
+            {/* {[
               { 
                 year: "2020", 
                 title: "Foundation", 
@@ -364,24 +383,24 @@ if (innovationImage) {
                 className={`timeline-item relative mb-24 last:mb-0 ${
                   index % 2 === 0 ? 'md:pr-[50%] md:pl-0' : 'md:pl-[50%] md:pr-0'
                 }`}
-              >
+              > */}
                 {/* Timeline dot */}
-                <div className={`timeline-dot absolute left-8 md:left-1/2 top-8 w-6 h-6 rounded-full transform md:-translate-x-1/2 z-10 border-4 border-[#151316] ${
+                {/* <div className={`timeline-dot absolute left-8 md:left-1/2 top-8 w-6 h-6 rounded-full transform md:-translate-x-1/2 z-10 border-4 border-[#151316] ${
                   index === 0 ? 'bg-[#D22D1E]' :
                   index === 1 ? 'bg-[#963AB0]' :
                   index === 2 ? 'bg-[#20469B]' :
                   index === 3 ? 'bg-[#D22D1E]' : 'bg-[#963AB0]'
-                } shadow-lg shadow-white/20`}></div>
+                } shadow-lg shadow-white/20`}></div> */}
 
                 {/* Content card */}
-                <div className={`ml-20 md:ml-0 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}>
-                  <div className={`group relative p-8 rounded-3xl bg-gradient-to-br ${item.gradient} backdrop-blur-xl border border-white/10 hover:border-white/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden`}>
+                {/* <div className={`ml-20 md:ml-0 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}>
+                  <div className={`group relative p-8 rounded-3xl bg-gradient-to-br ${item.gradient} backdrop-blur-xl border border-white/10 hover:border-white/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden`}> */}
                     {/* Animated gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-1000"></div>
+                    {/* <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-1000"></div> */}
                     
-                    <div className="relative z-10">
+                    {/* <div className="relative z-10"> */}
                       {/* Year badge */}
-                      <div className="inline-block mb-4 px-6 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
+                      {/* <div className="inline-block mb-4 px-6 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
                         <span className="text-3xl font-black bg-clip-text text-transparent" style={{
                           backgroundImage: "linear-gradient(90deg, #D22D1E 37.08%, #963AB0 62.26%, #20469B 99.82%)",
                           WebkitBackgroundClip: "text",
@@ -389,23 +408,23 @@ if (innovationImage) {
                         }}>
                           {item.year}
                         </span>
-                      </div>
+                      </div> */}
                       
-                    <h4
+                    {/* <h4
   className="text-4xl font-black text-white mb-4 transition-all duration-300 
              group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r 
              group-hover:from-[#D22D1E] group-hover:via-[#963AB0] group-hover:to-[#20469B]"
 >
-  {item.title}
-</h4>
+  {item.title} */}
+{/* </h4>
 
                       <p className="text-lg text-gray-300 leading-relaxed">
                         {item.desc}
                       </p>
-                    </div>
+                    </div> */}
 
                     {/* Decorative corner elements */}
-                    <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-white/10 rounded-tr-3xl"></div>
+                    {/* <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-white/10 rounded-tr-3xl"></div>
                     <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-white/10 rounded-bl-3xl"></div>
                   </div>
                 </div>
@@ -413,7 +432,11 @@ if (innovationImage) {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
+
+
+
+      <Journey/>
 
       {/* Values Section */}
       <div ref={valuesRef} className="relative z-10 py-20">

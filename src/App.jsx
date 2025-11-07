@@ -13,7 +13,10 @@ import About from './components/About';
 import NewHero from "./components/NewHero";
 import Navigation from './components/Navigation';
 import ScrollVelocity from './components/ScrollVelocity';
-  
+import Journey from './components/Journey';
+import ChromaGrid from './components/ChromaGrid';
+import CoursesSlider from './components/CoursesSlider';
+import Footer from './components/Footer';
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
@@ -33,12 +36,20 @@ function App() {
        {/* <HeroSection /> */}
  
 
+
+
+
+
+   <CoursesSlider />
+   
+   <ChromaGrid/>
+
       {/* <Projects /> */}
-      <Courses />
+      {/* <Courses /> */}
       {/* <UserCarousel /> */}
 
       <CTA />
-
+<Footer />
     </div>
   );
 }
