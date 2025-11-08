@@ -11,9 +11,12 @@ const Footer = () => {
     <footer className="bg-[#151316] text-gray-300 pt-5 pb-15 relative overflow-hidden border-t border-white/10">
       {/* Gradient background shimmer */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#151316] via-[#1a181b] to-[#151316]" />
-      <div className="relative container mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 z-10">
+
+      {/* 📱 Responsive Grid: 2 on mobile, 3 on tablet, 5 on large */}
+      <div className="relative container mx-auto px-6 py-16 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 z-10">
+
         {/* Company Info */}
-        <div>
+        <div className="col-span-2 sm:col-span-1">
           <h2 className="text-2xl font-extrabold text-white mb-4 tracking-wide">
             The Data Science Academy
           </h2>
@@ -47,6 +50,28 @@ const Footer = () => {
               <FaYoutube />
             </a>
           </div>
+        </div>
+
+        {/* Address */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-4 border-b border-white/10 pb-2">
+            Address
+          </h3>
+          <ul className="space-y-3 text-gray-400">
+            <li>
+              123 Knowledge Street,
+              <br />
+              Indore, Madhya Pradesh, India
+            </li>
+            <li>
+              <span className="text-white font-medium">Email:</span>{" "}
+              info@tdsa.ac.in
+            </li>
+            <li>
+              <span className="text-white font-medium">Phone:</span>{" "}
+              +91 98765 43210
+            </li>
+          </ul>
         </div>
 
         {/* Company Links */}
@@ -141,7 +166,7 @@ const Footer = () => {
       <div className="border-t border-white/10 mt-8 pt-6 text-center text-lg text-gray-500 relative z-10">
         © {new Date().getFullYear()} TDSA. All Rights Reserved. | Design & Developed By{" "}
         <span
-          className="text-transparent  bg-clip-text"
+          className="text-transparent bg-clip-text"
           style={{
             background:
               "linear-gradient(90deg, #D22D1E 30%, #963AB0 60%, #20469B 100%)",
