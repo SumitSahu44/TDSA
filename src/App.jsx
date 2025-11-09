@@ -29,27 +29,20 @@ function App() {
     <div className="app bg-navy-900 text-white">
       
        {/* <Navigation/> */}
-     
-      <NewHero />
+      
       {/* <Hero /> */}
-      <About/>
-       {/* <HeroSection /> */}
- 
-
-
-
-
-
-   <CoursesSlider />
-   
-   <ChromaGrid/>
-
+      {/* <HeroSection /> */}
       {/* <Projects /> */}
       {/* <Courses /> */}
       {/* <UserCarousel /> */}
-
-      <CTA />
-<Footer />
+        
+        
+        <NewHero />
+        <About/>
+        <CoursesSlider />
+        <ChromaGrid/>
+        <CTA />
+        <Footer />
     </div>
   );
 }
