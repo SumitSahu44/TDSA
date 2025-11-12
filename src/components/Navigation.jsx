@@ -20,7 +20,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-xlflex items-center justify-center">
                 <img 
-                  src="./images/tdsalogo-wbg.png" 
+                  src="/images/tdsalogo-wbg.png" 
                   alt="The DataScience Academy Logo" 
                   className="w-14 object-contain mt-0"
                 />
