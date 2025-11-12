@@ -130,3 +130,39 @@
   scrollbar-width: none !important;
   overflow-y: hidden !important;
 }
+
+
+
+
+
+
+
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide {
+  display: flex;
+  animation: slide 30s linear infinite;
+}
+
+.animate-slide:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.animate-ping {
+  animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}

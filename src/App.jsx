@@ -19,7 +19,7 @@ import ChromaGrid from "./components/ChromaGrid";
 import CoursesSlider from "./components/CoursesSlider";
 import Footer from "./components/Footer";
 import CourseDetails from "./components/CourseDetails";
-
+import AdminPanel from './pages/AdminPanel';
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
@@ -49,6 +49,9 @@ function App() {
 
         {/* Course Details Page */}
         <Route path="/course/:id" element={<CourseDetails />} />
+
+
+         <Route path="/admin" element={<AdminPanel />} />
       </Routes>
     </div>
   );
