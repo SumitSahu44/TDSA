@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { FaChevronDown } from "react-icons/fa";
+import { HashLink } from "react-router-hash-link";
 
 gsap.registerPlugin(SplitText);
 
@@ -146,9 +147,9 @@ const Hero = () => {
           >
             Start Learning Today
           </button>
-          <button className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-white text-white hover:bg-white hover:text-[#151316] transition-all duration-300 transform hover:-translate-y-1">
+          <HashLink smooth to="#courses"  className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-white text-white hover:bg-white hover:text-[#151316] transition-all duration-300 transform hover:-translate-y-1">
             View Courses
-          </button>
+          </HashLink>
         </div>
       </div>
 

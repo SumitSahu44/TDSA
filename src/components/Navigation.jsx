@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Navigation ke liye
+import { AuthContext } from '../context/AuthContext'; // Auth Context import karein
+import { User, LogOut, LogIn } from 'lucide-react'; // Icons for better UI
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout } = useContext(AuthContext); // User data aur logout function lein
+  const navigate = useNavigate();
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Courses', href: '#courses' },
-    { name: 'About', href: '#about' },
-    { name: 'Success Stories', href: '#success' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Courses', href: '/#courses' }, // Assuming homepage sections
+    { name: 'About', href: '/#about' },
+    { name: 'Success Stories', href: '/#success' },
+    { name: 'Contact', href: '/#contact' },
   ];
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+    setIsMenuOpen(false);
+  };
 
   return (
     <>
@@ -17,18 +28,18 @@ const Navbar = () => {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-20">
             {/* Logo - Clean White Version */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xlflex items-center justify-center">
+            <Link to="/" className="flex items-center space-x-3">
+              <div className="w-10 h-10 flex items-center justify-center">
                 <img 
                   src="/images/tdsalogo-wbg.png" 
                   alt="The DataScience Academy Logo" 
                   className="w-14 object-contain mt-0"
                 />
               </div>
-              <span className="text-white font-bold text-xl tracking-tight">
-                The DataScience<span className="text-white"><br/> Academy</span>
+              <span className="text-white font-bold text-xl tracking-tight leading-tight">
+                The DataScience<br/> <span className="text-gray-300">Academy</span>
               </span>
-            </div>
+            </Link>
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-8">
@@ -44,14 +55,38 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* CTA Buttons */}
-            <div className="hidden lg:flex items-center space-x-4">
-              <button className="px-6 py-2.5 text-gray-300 hover:text-white transition-colors duration-300 font-medium">
-                Login
-              </button>
-              <button className="px-8 py-2.5 rounded-xl bg-gradient-to-r from-[#D22D1E] to-[#963AB0] text-white font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-[#D22D1E]/20 hover:scale-105">
-                Get Started
-              </button>
+            {/* CTA Buttons (Login / User Profile) */}
+            <div className="hidden lg:flex items-center space-x-6">
+              {user ? (
+                // --- VIEW IF LOGGED IN ---
+                <div className="flex items-center gap-4">
+                  {/* User Name Display */}
+                  <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/10">
+                    <User size={18} className="text-[#D22D1E]" />
+                    <span className="text-white font-medium capitalize">
+                      {user.name || "Student"}
+                    </span>
+                  </div>
+
+                  {/* Logout Button */}
+                  <button 
+                    onClick={handleLogout}
+                    title="Logout"
+                    className="flex items-center gap-2 px-4 py-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300"
+                  >
+                    <LogOut size={20} />
+                    <span className="text-sm font-medium">Logout</span>
+                  </button>
+                </div>
+              ) : (
+                // --- VIEW IF NOT LOGGED IN ---
+                <Link 
+                  to="/login"
+                  className="px-6 py-2.5 text-gray-300 hover:text-white transition-colors duration-300 font-medium flex items-center gap-2"
+                >
+                  <LogIn size={18} /> Login
+                </Link>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -77,7 +112,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`lg:hidden absolute top-20 left-0 right-0 bg-gradient-to-br from-[#151316] to-[#1a181b] border-t border-white/10 transition-all duration-500 transform ${
+        <div className={`lg:hidden absolute top-20 left-0 right-0 bg-[#151316] border-t border-white/10 transition-all duration-500 transform ${
           isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'
         }`}>
           <div className="flex flex-col items-center py-8 space-y-8">
@@ -91,13 +126,32 @@ const Navbar = () => {
                 {item.name}
               </a>
             ))}
-            <div className="flex flex-col space-y-4 mt-4">
-              <button className="px-8 py-3 text-lg text-gray-300 border border-gray-600 rounded-xl hover:border-white transition-all duration-300">
-                Login
-              </button>
-              <button className="px-8 py-3 text-lg rounded-xl bg-gradient-to-r from-[#D22D1E] to-[#963AB0] text-white font-semibold transition-all duration-300 hover:shadow-2xl">
-                Get Started
-              </button>
+
+            <div className="flex flex-col space-y-4 mt-4 w-full px-8">
+              {user ? (
+                // --- MOBILE LOGGED IN VIEW ---
+                <>
+                  <div className="flex items-center justify-center gap-2 text-white text-lg font-bold">
+                     <User size={24} className="text-[#D22D1E]" />
+                     Hello, {user.name}
+                  </div>
+                  <button 
+                    onClick={handleLogout}
+                    className="flex items-center justify-center gap-2 px-8 py-3 text-lg text-red-400 border border-red-500/30 rounded-xl hover:bg-red-500/10 transition-all duration-300"
+                  >
+                    <LogOut size={20} /> Logout
+                  </button>
+                </>
+              ) : (
+                // --- MOBILE LOGGED OUT VIEW ---
+                <Link 
+                  to="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-center px-8 py-3 text-lg text-gray-300 border border-gray-600 rounded-xl hover:border-white transition-all duration-300"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </div>
         </div>
