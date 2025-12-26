@@ -139,23 +139,23 @@ const Footer = () => {
           </h3>
           <ul className="space-y-3">
             <li>
-              <a href="#" className="hover:text-[#20469B] transition-all">
+              <a href="/privacy" className="hover:text-[#20469B] transition-all">
                 Privacy Policy
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-[#20469B] transition-all">
+              <a href="/terms-of-service" className="hover:text-[#20469B] transition-all">
                 Terms of Service
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-[#20469B] transition-all">
+              <a href="/refund" className="hover:text-[#20469B] transition-all">
                 Refund Policy
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-[#20469B] transition-all">
-                Cookie Policy
+              <a href="/cancellation" className="hover:text-[#20469B] transition-all">
+          Cancellation Policy
               </a>
             </li>
           </ul>
