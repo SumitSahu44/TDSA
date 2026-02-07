@@ -9,8 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-
-
 // Public Components
 import NewHero from "./components/NewHero";
 import About from "./components/About";
@@ -31,6 +29,8 @@ import QuizPlayer from "./pages/QuizPlayer";
 
 // Admin & Faculty Components
 import AdminDashboard from "./components/admin/Dashbaord";
+import AdminLogin from "./components/admin/AdminLogin";
+import AdminProtectedRoute from "./components/admin/AdminProtectedRoute";
 import FacultyLogin from "./components/faculty/FacultyLogin";
 import FacultyRegister from "./components/faculty/FacultyRegister";
 import FacultyDashboard from "./components/faculty/FacultyDashboard";
@@ -44,9 +44,9 @@ import RefundPolicy from "./pages/RefundPolicy";
 import CancellationPolicy from "./pages/CancellationPolicy";
 import Navbar from "./components/Navigation";
 import ScrollToTop from "./pages/ScrollToTop";
+import FAQSection from "./components/Faq";
 
 function App() {
-
   // Override global alert → Convert to toast
   window.alert = function (msg) {
     toast(msg);
@@ -54,10 +54,10 @@ function App() {
 
   //  LOCATION CHECK START
   const location = useLocation();
-  
+
   // Check karein ki kya user Home Page ('/') par hai jahan NewHero hai?
   const isLandingPage = location.pathname === "/";
-  const isAdminPage = location.pathname === "/admin";
+  const isAdminPage = location.pathname.startsWith("/admin");
   const isFacultyPage = location.pathname === "/faculty/dashboard";
   //  LOCATION CHECK END
 
@@ -73,21 +73,19 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark" 
+        theme="dark"
         toastClassName="!bg-zinc-800 !text-white !font-sans !rounded-xl !shadow-2xl !border !border-white/5"
         progressClassName="!bg-gradient-to-r !from-pink-500 !via-red-500 !to-purple-600 !h-1.5"
         bodyClassName="!text-sm !font-medium"
       />
 
       <div className="app bg-navy-900 text-white min-h-screen overflow-x-hidden flex flex-col">
-        
         {/* 👇 GLOBAL Navigation: Sirf tab dikhega jab hum Landing Page par NAHI hain */}
-        {!isLandingPage && !isAdminPage && !isFacultyPage &&  <Navbar />}
-       <ScrollToTop/>
+        {!isLandingPage && !isAdminPage && !isFacultyPage && <Navbar />}
+        <ScrollToTop />
         {/* Content Area - Flex grow ensures footer sticks to bottom if content is short */}
         <div className="flex-grow">
           <Routes>
-
             {/* PUBLIC ROUTES */}
             <Route
               path="/"
@@ -98,8 +96,7 @@ function App() {
                   <About />
                   <Courses />
                   <ChromaGrid />
-                  <CTA />
-           
+                  {/* <CTA /> */}
                   <Footer />
                 </>
               }
@@ -130,11 +127,12 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
-            {/* ADMIN */}
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/admin/*" element={<AdminDashboard />} />
-
+            {/* ADMIN ROUTES */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route element={<AdminProtectedRoute />}>
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/*" element={<AdminDashboard />} />
+            </Route>
             {/* FACULTY */}
             <Route path="/faculty/login" element={<FacultyLogin />} />
             <Route path="/faculty/register" element={<FacultyRegister />} />
@@ -174,7 +172,6 @@ function App() {
         {/* 👇 GLOBAL FOOTER: Ye bhi tabhi dikhega jab hum Landing Page par NAHI hain */}
         {/* Note: Landing Page ka footer upar <Route path="/"> ke andar already included hai */}
         {!isLandingPage && <Footer />}
-
       </div>
     </AuthProvider>
   );

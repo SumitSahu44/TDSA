@@ -1,292 +1,201 @@
-import { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
+import React from "react";
+import { Star, Quote } from "lucide-react";
 
-const ChromaGrid = ({
-  items,
-  className = '',
-  radius = 300,
-  damping = 0.45,
-  fadeOut = 0.6,
-  ease = 'power3.out',
-}) => {
-  const rootRef = useRef(null);
-  const fadeRef = useRef(null);
-  const canvasRef = useRef(null);
-  const setX = useRef(null);
-  const setY = useRef(null);
-  const pos = useRef({ x: 0, y: 0 });
+// Student Placement Data
+const testimonials = [
+  {
+    id: 1,
+    name: "Aarav Sharma",
+    role: "Placed at Google",
+    location: "24 LPA",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4QfGDLMP-RHb1h_nmVpbw0VoLOwEM8mzqQ&s",
+    review:
+      "The curriculum was incredibly up-to-date. Landing a role at Google was my dream, and the placement support here made it possible.",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Priya Patel",
+    role: "Placed at Microsoft",
+    location: "22 LPA",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4WrTGk28J_Wwni_eMyguCrHJdQUaN1sosoA&s",
+    review:
+      "From mock interviews to resume building, the guidance was exceptional. I secured a 22 LPA package thanks to the dedicated mentors.",
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: "Rohan Gupta",
+    role: "Placed at TCS",
+    location: "8 LPA",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvQXbnhbt9SO8kdXt-P4nEdsxQnBdCJy7YaQ&s",
+    review:
+      "The hands-on projects gave me the confidence to crack the technical rounds. A truly life-changing experience.",
+    rating: 4.5,
+  },
+  {
+    id: 4,
+    name: "Sneha Reddy",
+    role: "Placed at Capegemini",
+    location: "12 LPA",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCdMxxD6EaK1VMaAkSXv26xma3uaK7DjoTXA7doZhNA&s",
+    review:
+      "I transitioned from a non-tech background to a Data Scientist role. The structured learning path was the key to my success.",
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: "Vikram Singh",
+    role: "Placed at Deloitte",
+    location: "12 LPA",
+    image:
+      "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=300&auto=format&fit=crop",
+    review:
+      "The placement team fought for every opportunity. I'm grateful for their relentless support and guidance.",
+    rating: 4.5,
+  },
+  {
+    id: 6,
+    name: "Ananya Iyer",
+    role: "Placed at Flipkart",
+    location: "15 LPA",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvnX7Nf88oDyOyH3B8JWfojY1ZC-eQr1SuDw&s",
+    review:
+      "Professional mentors and a strong alumni network helped me navigate the industry. Highly recommended for aspirants.",
+    rating: 5,
+  },
+];
 
-  const demo = [
-    {
-      image: 'https://i.pravatar.cc/300?img=8',
-      title: 'Alex Rivera',
-      subtitle: 'Data Scientist @ Google',
-      handle: '@alexrivera',
-      gradient: 'linear-gradient(145deg,#D22D1E,#151316)',
-      url: 'https://linkedin.com/in/',
-    },
-    {
-      image: 'https://i.pravatar.cc/300?img=11',
-      title: 'Jordan Chen',
-      subtitle: 'ML Engineer @ Amazon',
-      handle: '@jordanchen',
-      gradient: 'linear-gradient(210deg,#963AB0,#151316)',
-      url: 'https://linkedin.com/in/',
-    },
-    {
-      image: 'https://i.pravatar.cc/300?img=3',
-      title: 'Morgan Blake',
-      subtitle: 'AI Researcher @ OpenAI',
-      handle: '@morganblake',
-      gradient: 'linear-gradient(165deg,#20469B,#151316)',
-      url: 'https://linkedin.com/in/',
-    },
-    {
-      image: 'https://i.pravatar.cc/300?img=16',
-      title: 'Casey Park',
-      subtitle: 'Data Analyst @ Netflix',
-      handle: '@caseypark',
-      gradient: 'linear-gradient(195deg,#D22D1E,#151316)',
-      url: 'https://linkedin.com/in/',
-    },
-    {
-      image: 'https://i.pravatar.cc/300?img=25',
-      title: 'Sam Kim',
-      subtitle: 'AI Developer @ Meta',
-      handle: '@thesamkim',
-      gradient: 'linear-gradient(225deg,#963AB0,#151316)',
-      url: 'https://linkedin.com/in/',
-    },
-    {
-      image: 'https://i.pravatar.cc/300?img=60',
-      title: 'Tyler Rodriguez',
-      subtitle: 'Cloud Engineer @ Microsoft',
-      handle: '@tylerrod',
-      gradient: 'linear-gradient(135deg,#20469B,#151316)',
-      url: 'https://linkedin.com/in/',
-    },
-  ];
+const TestimonialCard = ({ t }) => (
+  <div className="flex-shrink-0 w-[300px] md:w-[350px] bg-zinc-900/80 border border-white/10 rounded-2xl p-4 md:p-6 mx-3 hover:bg-zinc-800 transition-all duration-300 backdrop-blur-sm group hover:border-blue-500/40 hover:-translate-y-1">
+    <div className="flex justify-between items-start mb-0 md:mb-4">
+      <div className="flex items-center gap-1">
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            size={14}
+            className={`${
+              i < Math.floor(t.rating)
+                ? "text-yellow-500 fill-yellow-500"
+                : "text-zinc-700"
+            }`}
+          />
+        ))}
+      </div>
+      <Quote className="w-5 h-5 text-white/20 group-hover:text-blue-500 transition-colors" />
+    </div>
 
-  const data = items?.length ? items : demo;
+    <p className="text-gray-300 text-xs md:text-sm leading-relaxed mb-1 md:mb-6 line-clamp-3 italic">
+      "{t.review}"
+    </p>
 
-  // 🎨 Animated Background: Floating Dots + Connecting Lines
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    let w, h;
-    const resize = () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const numDots = 80;
-    const colors = ['#D22D1E', '#963AB0', '#20469B'];
-    const dots = Array.from({ length: numDots }).map(() => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.7,
-      vy: (Math.random() - 0.5) * 0.7,
-      radius: 1.2 + Math.random() * 1.4,
-      color: colors[Math.floor(Math.random() * colors.length)],
-    }));
-
-    const draw = () => {
-      ctx.clearRect(0, 0, w, h);
-
-      for (let i = 0; i < numDots; i++) {
-        const d = dots[i];
-        d.x += d.vx;
-        d.y += d.vy;
-        if (d.x < 0 || d.x > w) d.vx *= -1;
-        if (d.y < 0 || d.y > h) d.vy *= -1;
-
-        // Glow dots
-        const gradient = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, 12);
-        gradient.addColorStop(0, d.color);
-        gradient.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.radius * 2.5, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Connection lines
-        for (let j = i + 1; j < numDots; j++) {
-          const d2 = dots[j];
-          const dx = d.x - d2.x;
-          const dy = d.y - d2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            const alpha = 1 - dist / 120;
-            ctx.strokeStyle = `rgba(255,255,255,${alpha * 0.15})`;
-            ctx.beginPath();
-            ctx.moveTo(d.x, d.y);
-            ctx.lineTo(d2.x, d2.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      requestAnimationFrame(draw);
-    };
-
-    draw();
-    return () => window.removeEventListener('resize', resize);
-  }, []);
-
-  // 🌀 GSAP Mask Hover Movement
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-    setX.current = gsap.quickSetter(el, '--x', 'px');
-    setY.current = gsap.quickSetter(el, '--y', 'px');
-    const { width, height } = el.getBoundingClientRect();
-    pos.current = { x: width / 2, y: height / 2 };
-    setX.current(pos.current.x);
-    setY.current(pos.current.y);
-  }, []);
-
-  const moveTo = (x, y) => {
-    gsap.to(pos.current, {
-      x,
-      y,
-      duration: damping,
-      ease,
-      onUpdate: () => {
-        setX.current?.(pos.current.x);
-        setY.current?.(pos.current.y);
-      },
-      overwrite: true,
-    });
-  };
-
-  const handleMove = (e) => {
-    const r = rootRef.current.getBoundingClientRect();
-    moveTo(e.clientX - r.left, e.clientY - r.top);
-    gsap.to(fadeRef.current, { opacity: 0, duration: 0.25, overwrite: true });
-  };
-
-  const handleLeave = () => {
-    gsap.to(fadeRef.current, {
-      opacity: 1,
-      duration: fadeOut,
-      overwrite: true,
-    });
-  };
-
-  const handleCardClick = (url) => {
-    if (url) window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
-  const handleCardMove = (e) => {
-    const c = e.currentTarget;
-    const rect = c.getBoundingClientRect();
-    c.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-    c.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-  };
-
-  return (
-    <section
-      className="relative min-h-screen bg-[#0c0b0c] py-20 flex flex-col items-center justify-center overflow-hidden"
-      data-scroll-section
-    >
-      {/* Animated Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0"
-        style={{
-          background:
-            'radial-gradient(circle at center, #151316 10%, #0c0b0c 100%)',
-        }}
+    <div className="flex items-center gap-3 border-t border-white/5 pt-4 mt-auto">
+      <img
+        src={t.image}
+        alt={t.name}
+        className="w-10 h-10 rounded-full object-cover bg-gray-800 border border-white/10 group-hover:border-blue-500/50 transition-colors"
       />
-
-      {/* Heading */}
-      <div className="relative text-center mb-16 px-6 z-10">
-        <h2
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text mb-4"
-          style={{
-            background:
-              'linear-gradient(90deg, #D22D1E 30%, #963AB0 60%, #20469B 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
-          Our Students’ Success
-        </h2>
-        <p className="text-gray-300 text-lg md:text-xl">
-          From learners to leaders — see where our graduates are today.
+      <div className="overflow-hidden">
+        <h4 className="font-bold text-white text-sm truncate">{t.name}</h4>
+        <p className="text-[10px] md:text-xs text-gray-400 group-hover:text-blue-400 transition-colors font-medium truncate">
+          {t.role} <span className="text-zinc-600">•</span>{" "}
+          <span className="text-emerald-400">{t.location}</span>
         </p>
       </div>
+    </div>
+  </div>
+);
 
-      {/* Cards Grid */}
-      <div
-        ref={rootRef}
-        onPointerMove={handleMove}
-        onPointerLeave={handleLeave}
-        className={`relative w-full max-w-6xl flex flex-wrap justify-center items-start gap-6 z-10 ${className}`}
-        style={{
-          '--r': `${radius}px`,
-          '--x': '50%',
-          '--y': '50%',
-        }}
+const Testimonials = () => {
+  // Split data into two rows
+  const firstRow = [...testimonials.slice(0, 3)];
+  const secondRow = [...testimonials.slice(3, 6)];
+
+  return (
+    <div className="min-h-screen bg-black">
+      {/* Custom styles for the marquee animation */}
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-reverse {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-marquee {
+          display: flex;
+          width: fit-content;
+          animation: marquee 30s linear infinite;
+        }
+        .animate-marquee-reverse {
+          display: flex;
+          width: fit-content;
+          animation: marquee-reverse 30s linear infinite;
+        }
+        .pause-on-hover:hover .animate-marquee,
+        .pause-on-hover:hover .animate-marquee-reverse {
+          animation-play-state: paused;
+        }
+      `}</style>
+
+      <section
+        id="testimonials"
+        className="text-white py-16 md:py-24 overflow-hidden border-b border-white/5 relative"
       >
-        {data.map((c, i) => (
-          <article
-            key={i}
-            onMouseMove={handleCardMove}
-            onClick={() => handleCardClick(c.url)}
-            className="group relative flex flex-col w-[280px] rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_25px_rgba(0,0,0,0.6)] transition-transform duration-300 cursor-pointer hover:-translate-y-1"
-            style={{
-              background: c.gradient,
-            }}
-          >
-            {/* Hover Glow */}
-            <div
-              className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-20 opacity-0 group-hover:opacity-100"
-              style={{
-                background:
-                  'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.25), transparent 70%)',
-              }}
-            />
+        <div className="max-w-7xl mx-auto px-4 mb-12 md:mb-20 text-center">
+          <span className="text-blue-500 font-semibold tracking-widest uppercase text-[10px] md:text-xs mb-3 block">
+            Placement Success Stories
+          </span>
+          <h2 className="text-3xl md:text-6xl font-bold text-white tracking-tight">
+            Our Students in{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">
+              Top Companies
+            </span>
+          </h2>
+        </div>
 
-            {/* Image */}
-            <div className="relative z-10">
-              <img
-                src={c.image}
-                alt={c.title}
-                loading="lazy"
-                className="w-full h-56 object-cover"
-              />
-            </div>
-
-            {/* Text */}
-            <footer className="relative z-10 p-5 text-white font-sans flex flex-col">
-              <h3 className="text-lg font-semibold mb-1">{c.title}</h3>
-              <p className="text-sm opacity-80 mb-1">{c.subtitle}</p>
-              <span className="text-sm text-gray-400">{c.handle}</span>
-            </footer>
-          </article>
-        ))}
-
-        {/* Spotlight Mask */}
+        {/* Marquee Container with Mask Gradient */}
         <div
-          ref={fadeRef}
-          className="absolute inset-0 pointer-events-none transition-opacity duration-[250ms] z-40"
+          className="relative flex flex-col gap-6 md:gap-10 pause-on-hover"
           style={{
-            backdropFilter: 'grayscale(1) brightness(0.8)',
-            WebkitBackdropFilter: 'grayscale(1) brightness(0.8)',
-            background: 'rgba(0,0,0,0.001)',
             maskImage:
-              'radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.9)30%,rgba(255,255,255,0.7)45%,rgba(255,255,255,0.5)60%,rgba(255,255,255,0.3)75%,transparent 100%)',
+              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
             WebkitMaskImage:
-              'radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.9)30%,rgba(255,255,255,0.7)45%,rgba(255,255,255,0.5)60%,rgba(255,255,255,0.3)75%,transparent 100%)',
-            opacity: 1,
+              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
           }}
-        />
-      </div>
-    </section>
+        >
+          {/* Row 1: Leftward Movement */}
+          <div className="flex overflow-hidden">
+            <div className="animate-marquee">
+              {/* Duplicate the items to create a seamless loop */}
+              {[...firstRow, ...firstRow, ...firstRow, ...firstRow].map(
+                (t, i) => (
+                  <TestimonialCard key={`row1-${i}`} t={t} />
+                ),
+              )}
+            </div>
+          </div>
+
+          {/* Row 2: Rightward Movement */}
+          <div className="flex overflow-hidden">
+            <div className="animate-marquee-reverse">
+              {[...secondRow, ...secondRow, ...secondRow, ...secondRow].map(
+                (t, i) => (
+                  <TestimonialCard key={`row2-${i}`} t={t} />
+                ),
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
-export default ChromaGrid;
+export default Testimonials;

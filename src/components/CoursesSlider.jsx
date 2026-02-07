@@ -75,7 +75,7 @@ const Courses = () => {
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#151316] to-[#1a181b] flex flex-col justify-center items-center py-20">
       {/* Background gradients */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden py-10">
         <div
           className="absolute -top-40 -left-40 w-80 h-80 rounded-full opacity-10 blur-xl"
           style={{

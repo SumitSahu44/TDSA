@@ -37,13 +37,13 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="mt-32 mb-20 max-w-4xl mx-auto px-4">
+    <div className="mt-10 md:mt-32 mb-20 max-w-4xl mx-auto px-4">
       {/* Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300 text-xs font-bold uppercase tracking-wider mb-4">
           <HelpCircle size={14} /> Common Queries
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-white">
+        <h2 className="text-2xl md:text-4xl font-bold text-white">
           Frequently Asked Questions
         </h2>
       </div>
@@ -63,9 +63,9 @@ const FAQSection = () => {
               }`}
             >
               {/* Question Header */}
-              <div className="p-6 flex justify-between items-center gap-4">
+              <div className="p-4 md:p-6 flex justify-between items-center gap-4">
                 <h3
-                  className={`text-lg font-semibold transition-colors ${
+                  className={`text-base md:text-lg font-semibold transition-colors ${
                     isOpen ? "text-white" : "text-zinc-300 group-hover:text-white"
                   }`}
                 >
@@ -89,7 +89,7 @@ const FAQSection = () => {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <div className="px-6 pb-6 pr-12 text-zinc-400 text-base leading-relaxed">
+                  <div className="px-4 md:px-6 pb-4 md:pb-6 pr-4 md:pr-12 text-zinc-400 text-sm md:text-base leading-relaxed">
                     {faq.answer}
                   </div>
                 </div>

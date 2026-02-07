@@ -5,6 +5,8 @@ import {
   FaInstagram,
   FaYoutube,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const Footer = () => {
   return (
@@ -13,16 +15,15 @@ const Footer = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-[#151316] via-[#1a181b] to-[#151316]" />
 
       {/* 📱 Responsive Grid: 2 on mobile, 3 on tablet, 5 on large */}
-      <div className="relative container mx-auto px-6 py-16 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 z-10">
-
+      <div className="relative container mx-auto px-6 py-5 md:py-16 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 z-10">
         {/* Company Info */}
         <div className="col-span-2 sm:col-span-1">
-          <h2 className="text-2xl font-extrabold text-white mb-4 tracking-wide">
-            The Data Science Academy
-          </h2>
+          <span className=" ">
+           <img className="w-20 h-20" src="/images/tdsalogo-wbg.png" alt="" />
+          </span>
           <p className="text-gray-400 mb-6 leading-relaxed">
-            Empowering Students through innovation, data, and intelligence.
-            Join us in redefining digital transformation.
+            Empowering Students through innovation, data, and intelligence. Join
+            us in redefining digital transformation.
           </p>
           <div className="flex space-x-4 mt-4">
             <a
@@ -68,8 +69,8 @@ const Footer = () => {
               info@tdsa.ac.in
             </li>
             <li>
-              <span className="text-white font-medium">Phone:</span>{" "}
-              +91 98765 43210
+              <span className="text-white font-medium">Phone:</span> +91 98765
+              43210
             </li>
           </ul>
         </div>
@@ -81,24 +82,31 @@ const Footer = () => {
           </h3>
           <ul className="space-y-3">
             <li>
-              <a href="#" className="hover:text-[#963AB0] transition-all">
+              <HashLink
+                smooth
+                to="/#about"
+                className="hover:text-[#963AB0] transition-all"
+              >
                 About Us
-              </a>
+              </HashLink>
             </li>
             <li>
-              <a href="#" className="hover:text-[#963AB0] transition-all">
-                Our Team
-              </a>
+              <HashLink
+                smooth
+                to="/#success"
+                className="hover:text-[#963AB0] transition-all"
+              >
+                Success Stories
+              </HashLink>
             </li>
             <li>
-              <a href="#" className="hover:text-[#963AB0] transition-all">
-                Careers
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-[#963AB0] transition-all">
+              <HashLink
+                smooth
+                to="/#contact"
+                className="hover:text-[#963AB0] transition-all"
+              >
                 Contact
-              </a>
+              </HashLink>
             </li>
           </ul>
         </div>
@@ -110,24 +118,36 @@ const Footer = () => {
           </h3>
           <ul className="space-y-3">
             <li>
-              <a href="#" className="hover:text-[#D22D1E] transition-all">
+              <Link
+                to="/curriculum/data-science"
+                className="hover:text-[#D22D1E] transition-all"
+              >
                 Data Science
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-[#D22D1E] transition-all">
+              <Link
+                to="/curriculum/data-engineering"
+                className="hover:text-[#D22D1E] transition-all"
+              >
                 Data Engineering
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-[#D22D1E] transition-all">
+              <Link
+                to="/curriculum/machine-learning"
+                className="hover:text-[#D22D1E] transition-all"
+              >
                 Machine Learning
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-[#D22D1E] transition-all">
+              <Link
+                to="/curriculum/ai-&-visualization"
+                className="hover:text-[#D22D1E] transition-all"
+              >
                 AI & Visualization
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -139,24 +159,36 @@ const Footer = () => {
           </h3>
           <ul className="space-y-3">
             <li>
-              <a href="/privacy" className="hover:text-[#20469B] transition-all">
+              <Link
+                to="/privacy"
+                className="hover:text-[#20469B] transition-all"
+              >
                 Privacy Policy
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/terms-of-service" className="hover:text-[#20469B] transition-all">
+              <Link
+                to="/terms-of-service"
+                className="hover:text-[#20469B] transition-all"
+              >
                 Terms of Service
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/refund" className="hover:text-[#20469B] transition-all">
+              <Link
+                to="/refund"
+                className="hover:text-[#20469B] transition-all"
+              >
                 Refund Policy
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/cancellation" className="hover:text-[#20469B] transition-all">
-          Cancellation Policy
-              </a>
+              <Link
+                to="/cancellation"
+                className="hover:text-[#20469B] transition-all"
+              >
+                Cancellation Policy
+              </Link>
             </li>
           </ul>
         </div>
@@ -164,7 +196,8 @@ const Footer = () => {
 
       {/* Divider & Copyright */}
       <div className="border-t border-white/10 mt-8 pt-6 text-center text-lg text-gray-500 relative z-10">
-        © {new Date().getFullYear()} TDSA. All Rights Reserved. | Design & Developed By{" "}
+        © {new Date().getFullYear()} TDSA. All Rights Reserved. | Design &
+        Developed By{" "}
         <span
           className="text-transparent bg-clip-text"
           style={{

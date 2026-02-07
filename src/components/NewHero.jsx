@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import LightRays from "./LightRays";
-import Navigation from './Navigation';
+import Navigation from "./Navigation";
 
 const NewHero = () => {
   const containerRef = useRef(null);
@@ -13,12 +13,12 @@ const NewHero = () => {
 
       // 1. 🧠 Exact Re-creation of your requested animation
       tl.fromTo(
-        ".char", 
+        ".char",
         {
           opacity: 0,
-          y: 80,          // Niche se aayega
-          rotateX: 90,    // Rotate hoke seedha hoga
-          scale: 0.8,     // Thoda chota start hoga
+          y: 80, // Niche se aayega
+          rotateX: 90, // Rotate hoke seedha hoga
+          scale: 0.8, // Thoda chota start hoga
           transformOrigin: "50% 50% -50px", // 3D pivot point
         },
         {
@@ -27,9 +27,9 @@ const NewHero = () => {
           rotateX: 0,
           scale: 1,
           stagger: 0.025, // Aapka fast stagger
-          duration: 0.8,  // Aapka duration
-          force3D: true,  // Text crisp rakhne ke liye
-        }
+          duration: 0.8, // Aapka duration
+          force3D: true, // Text crisp rakhne ke liye
+        },
       );
 
       // 2. Subtext appear faster (Same as your code)
@@ -42,7 +42,7 @@ const NewHero = () => {
           duration: 0.7,
           ease: "power2.out",
         },
-        "-=0.3" // appear sooner
+        "-=0.3", // appear sooner
       );
 
       // 3. Scroll indicator faster too
@@ -50,10 +50,9 @@ const NewHero = () => {
         scrollIndicatorRef.current,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.6 },
-        "-=0.2"
+        "-=0.2",
       );
-
-    }, containerRef); 
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
@@ -76,8 +75,10 @@ const NewHero = () => {
   };
 
   return (
-    <section ref={containerRef} className="relative w-full min-h-screen overflow-hidden bg-[#151316]">
-      
+    <section
+      ref={containerRef}
+      className="relative w-full min-h-screen overflow-hidden bg-[#151316]"
+    >
       {/* Navbar */}
       <div className="absolute top-0 left-0 w-full z-50">
         <Navigation />
@@ -101,27 +102,25 @@ const NewHero = () => {
       <div
         className="absolute inset-0 opacity-[0.04] z-0 pointer-events-none"
         style={{
-          background: "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
+          background:
+            "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
         }}
       ></div>
 
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center w-full h-screen px-6 pt-24">
-        
         {/* ✅ H1 with Manual Split & 3D Perspective */}
         <h1
           style={{ perspective: "1000px" }} // Important for rotationX effect
-          className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 text-white leading-tight"
+          className="text-2xl sm:text-6xl md:text-7xl font-bold mb-2 md:mb-6 text-white leading-tight"
         >
-           {/* Line 1 */}
-           <div className="block">
+          {/* Line 1 */}
+          <div className="block">
             {splitText("May these lights guide you,")}
           </div>
-          
+
           {/* Line 2 */}
-          <div className="block mt-2">
-            {splitText("on your path")}
-          </div>
+          <div className="block mt-2">{splitText("on your path")}</div>
         </h1>
 
         <p className="hero-subtext opacity-0 text-lg sm:text-xl md:text-2xl text-white font-light translate-y-3">
@@ -129,7 +128,8 @@ const NewHero = () => {
           <span
             className="font-bold inline-block"
             style={{
-              background: "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
+              background:
+                "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               filter: "drop-shadow(0 0 8px rgba(210,45,30,0.7))",
@@ -140,19 +140,24 @@ const NewHero = () => {
           of Data Science Education
         </p>
 
-        <div className="hero-subtext opacity-0 mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center translate-y-3">
+        <div className="hero-subtext opacity-0  mt-10 flex  sm:flex-row gap-4 justify-center items-center translate-y-3">
           <button
-            className="px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(150,58,176,0.8)]"
+            onClick={() => (window.location.href = "/register")}
+            className="px-4 md:px-8 py-3 md:py-4 rounded-md   md:rounded-xl font-semibold md:font-bold text-md md:text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(150,58,176,0.8)]"
             style={{
-              background: "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
+              background:
+                "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
               color: "white",
             }}
           >
-            Start Learning Today
+            Start Learning 
           </button>
-          <button className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-white text-white hover:bg-white hover:text-[#151316] transition-all duration-300 transform hover:-translate-y-1">
+          <a
+            href="#courses"
+            className="px-4 md:px-8 py-3 md:py-4 rounded-md   md:rounded-xl font-semibold md:font-bold text-md md:text-lg border-2 border-white text-white hover:bg-white hover:text-[#151316] transition-all duration-300 transform hover:-translate-y-1 block md:inline-block text-center"
+          >
             View Courses
-          </button>
+          </a>
         </div>
       </div>
 
@@ -166,7 +171,8 @@ const NewHero = () => {
           <div
             className="w-1 h-3 rounded-full animate-bounce mt-1"
             style={{
-              background: "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
+              background:
+                "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
             }}
           ></div>
         </div>

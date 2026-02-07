@@ -1,23 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FaPaperPlane, FaCheck } from 'react-icons/fa';
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaPaperPlane, FaCheck } from "react-icons/fa";
 
 const CTA = () => {
   const sectionRef = useRef(null);
   const formRef = useRef(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',   // ✅ added phone field
-    interest: ''
+    name: "",
+    email: "",
+    phone: "", // ✅ added phone field
+    interest: "",
   });
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     // Floating particles animation
-    const particles = document.querySelectorAll('.particle');
+    const particles = document.querySelectorAll(".particle");
     particles.forEach((particle, index) => {
       gsap.to(particle, {
         y: -15,
@@ -25,7 +25,7 @@ const CTA = () => {
         duration: 2 + index * 0.3,
         repeat: -1,
         yoyo: true,
-        ease: 'sine.inOut',
+        ease: "sine.inOut",
       });
     });
 
@@ -37,30 +37,31 @@ const CTA = () => {
         y: 0,
         opacity: 1,
         duration: 1.2,
-        ease: 'power3.out',
+        ease: "power3.out",
         scrollTrigger: {
           trigger: formRef.current,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
+          start: "top 85%",
+          toggleActions: "play none none reverse",
         },
-      }
+      },
     );
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   return (
     <section
+      id="contact"
       ref={sectionRef}
       className="min-h-screen relative flex items-center pb-15 pt-15 justify-center overflow-hidden bg-[#151316]"
       data-scroll-section
@@ -75,7 +76,7 @@ const CTA = () => {
           className="particle absolute w-2 h-2 rounded-full blur-sm opacity-20"
           style={{
             background:
-              'linear-gradient(90deg,#D22D1E 0%,#963AB0 50%,#20469B 100%)',
+              "linear-gradient(90deg,#D22D1E 0%,#963AB0 50%,#20469B 100%)",
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
           }}
@@ -85,14 +86,14 @@ const CTA = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-center mb-16 tracking-wide">
-            Join Us{' '}
+            Join Us{" "}
             <span
               className="text-transparent bg-clip-text"
               style={{
                 background:
-                  'linear-gradient(90deg, #D22D1E 30%, #963AB0 60%, #20469B 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                  "linear-gradient(90deg, #D22D1E 30%, #963AB0 60%, #20469B 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               }}
             >
               Today
@@ -185,7 +186,7 @@ const CTA = () => {
                 className="relative w-full py-4 rounded-xl text-white font-semibold text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg group overflow-hidden border border-white/15"
                 style={{
                   background:
-                    'linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)',
+                    "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-700"></div>
@@ -198,25 +199,27 @@ const CTA = () => {
 
             {/* Features */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-12 border-t border-white/10">
-              {['No upfront cost', 'Flexible schedule', '1:1 Mentor Support'].map(
-                (feature, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center space-x-3 text-gray-300"
-                  >
-                    <FaCheck
-                      className="text-transparent bg-clip-text"
-                      style={{
-                        background:
-                          'linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                      }}
-                    />
-                    <span>{feature}</span>
-                  </div>
-                )
-              )}
+              {[
+                "No upfront cost",
+                "Flexible schedule",
+                "1:1 Mentor Support",
+              ].map((feature, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-center space-x-3 text-gray-300"
+                >
+                  <FaCheck
+                    className="text-transparent bg-clip-text"
+                    style={{
+                      background:
+                        "linear-gradient(90deg,#D22D1E 37.08%,#963AB0 62.26%,#20469B 99.82%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  />
+                  <span>{feature}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

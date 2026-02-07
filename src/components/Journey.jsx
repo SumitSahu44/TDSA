@@ -7,42 +7,42 @@ const timelineData = {
     {
       year: 2020,
       image: "/images/datavisulation.png",
-      text: "eClerx is founded by Anjan Malik and PD Mundhra.",
+      text: "Data Science Academy was founded with a vision to democratize data education and bridge the industry skill gap.",
     },
   ],
   "2021 - 2022": [
     {
       year: 2021,
       image: "/images/ML.png",
-      text: "We go global with our first acquisition: US-based Agilyst Inc.",
+      text: "Expanded our curriculum to include comprehensive Machine Learning modules, helping students master predictive modeling.",
     },
   ],
   "2022 - 2023": [
     {
       year: 2022,
       image: "/images/Ai.png",
-      text: "A new chapter begins with innovation and digital transformation.",
+      text: "Launched advanced Artificial Intelligence and Deep Learning specializations, incorporating cutting-edge Generative AI topics.",
     },
   ],
   "2023 - 2024": [
     {
       year: 2023,
       image: "/images/innovation-lab.jpeg",
-      text: "A new chapter begins with innovation and digital transformation.",
+      text: "Inaugurated our dedicated Innovation Lab to foster research and practical application of data science in real-world scenarios.",
     },
   ],
   "2024 - 2025": [
     {
       year: 2024,
       image: "/images/business.jpeg",
-      text: "A new chapter begins with innovation and digital transformation.",
+      text: "Forged strategic partnerships with leading tech, finance, and consulting firms to enhance placement opportunities for our graduates.",
     },
   ],
   "2025 - Present": [
     {
       year: 2025,
       image: "/images/dataengineering.png",
-      text: "A new chapter begins with innovation and digital transformation.",
+      text: "Embarking on a new era of global expansion and introducing comprehensive Data Engineering tracks to shape the future of big data.",
     },
   ],
 };
@@ -86,7 +86,7 @@ export default function Journey() {
         </h2>
 
         {/* Top Range Selector */}
-        <div className="flex justify-center flex-wrap gap-4 text-gray-300 text-sm md:text-base font-medium border-b border-white/10 pb-4">
+        <div className="flex justify-center flex-wrap gap-2 md:gap-4 text-gray-300 text-sm md:text-base font-medium border-b border-white/10 pb-4">
           {Object.keys(timelineData).map((range) => (
             <button
               key={range}

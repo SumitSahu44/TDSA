@@ -348,8 +348,8 @@ const QuizPlayer = () => {
                                 </div>
                                 <div>
                                     <h2 className="text-zinc-400 text-sm font-medium uppercase tracking-wider mb-1">Assessment Result</h2>
-                                    <h1 className="text-4xl font-bold text-white mb-2">{passed ? "Excellent Work!" : "Needs Improvement"}</h1>
-                                    <p className="text-zinc-500 flex items-center gap-2">
+                                    <h1 className="text-xl md:text-4xl font-bold text-white mb-2">{passed ? "Excellent Work!" : "Needs Improvement"}</h1>
+                                    <p className="text-zinc-500 text-xs md:text-base flex items-center gap-2">
                                         You answered <span className="text-white font-bold">{result.correctAnswers}</span> out of {result.totalQuestions} correctly.
                                     </p>
                                 </div>
@@ -361,7 +361,7 @@ const QuizPlayer = () => {
                     </div>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
+                <div className="max-w-7xl mx-auto px-3 md:px-6 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
                     <div className="space-y-6">
                         {quiz.questions.map((q, index) => {
                             const qResult = getQuestionResult(q._id);
@@ -369,7 +369,7 @@ const QuizPlayer = () => {
                             
                             return (
                                 <div key={q._id} id={`question-${index + 1}`} className={`rounded-2xl border overflow-hidden transition-all ${isCorrect ? 'bg-zinc-900/40 border-zinc-800' : 'bg-red-900/5 border-red-900/20'}`}>
-                                    <div className="p-6">
+                                    <div className="p-3 md:p-6">
                                         <div className="flex justify-between items-start mb-6">
                                             <h3 className="text-lg font-medium flex gap-4 leading-relaxed text-zinc-100 pr-4">
                                                 <span className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold border ${isCorrect ? 'bg-green-500/10 text-green-400 border-green-500/20' : 'bg-red-500/10 text-red-400 border-red-500/20'}`}>

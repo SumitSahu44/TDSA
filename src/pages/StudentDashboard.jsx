@@ -33,7 +33,7 @@ const StudentDashboard = () => {
       const fullData = await Promise.all(enrollments.map(async (enrollment) => {
         const courseId = enrollment.course?._id || enrollment.course || enrollment.courseId;
         if (!courseId) return null;
-
+                                                  
         let quizzes = [];
         let courseDetails = enrollment.course;
 
@@ -223,19 +223,19 @@ const StudentDashboard = () => {
                 dashboardData.map((item) => (
                   <div 
                     key={item._id} 
-                    className="group bg-zinc-900/30 hover:bg-zinc-900/50 border-l-2 border-transparent hover:border-purple-500 px-8 py-6 transition-all"
+                    className="group bg-zinc-900/30 hover:bg-zinc-900/50 border-l-2 border-transparent hover:border-purple-500 px-3 md:px-8 py-3 md:py-6 transition-all"
                   >
-                    <div className="flex items-center justify-between gap-8">
-                      <div className="flex items-center gap-6 flex-1">
-                        <div className="w-14 h-14 bg-zinc-900 rounded-xl flex items-center justify-center group-hover:bg-zinc-800 transition-all">
+                    <div className="flex items-center flex-col md:flex-row justify-between gap-8">
+                      <div className="flex items-center  gap-3 md:gap-6 flex-1">
+                        <div className="w-14 h-14 bg-zinc-900 rounded-xl hidden md:flex items-center justify-center group-hover:bg-zinc-800 transition-all">
                           <BookOpen size={24} className="text-zinc-400 group-hover:text-purple-400 transition-colors" />
                         </div>
                         <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
+                          <div className="flex items-center gap-3 mb-0 md:mb-2">
                             <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
                               {item.course?.subject || "Loading..."}
                             </h3>
-                            <span className="px-2 py-1 bg-green-500/10 border border-green-500/20 rounded text-green-400 text-xs font-bold uppercase">
+                            <span className="px-2 py-1 bg-green-500/10 border border-green-500/20 rounded text-green-400 text-[8px] md:text-xs font-bold uppercase">
                               Active
                             </span>
                           </div>
@@ -252,7 +252,7 @@ const StudentDashboard = () => {
                       </div>
                       <Link 
                         to={`/curriculum/${item.course?.subject?.replace(/\s+/g, '-')}`} 
-                        className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-zinc-200 transition-all whitespace-nowrap"
+                        className="flex items-center gap-2 px-3 md:px-6 py-2 md:py-3 bg-white text-black rounded-lg font-semibold hover:bg-zinc-200 transition-all whitespace-nowrap"
                       >
                         <PlayCircle size={18} />
                         Continue
@@ -286,9 +286,9 @@ const StudentDashboard = () => {
                         </div>
                     )}
 
-                    <div className="flex items-center justify-between gap-8">
+                    <div className="flex items-center flex-col md:flex-row justify-between gap-8">
                       <div className="flex items-center gap-6 flex-1">
-                        <div className="w-14 h-14 bg-zinc-900 rounded-xl flex items-center justify-center group-hover:bg-zinc-800 transition-all">
+                        <div className="w-14 h-14 hidden md:flex bg-zinc-900 rounded-xl  items-center justify-center group-hover:bg-zinc-800 transition-all">
                           {quiz.isFinalExam ? (
                               <FileCheck size={24} className="text-purple-400" />
                           ) : (
@@ -296,7 +296,7 @@ const StudentDashboard = () => {
                           )}
                         </div>
                         <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
+                          <div className="flex items-center gap-0 md:gap-3 justify-between mb-2">
                             <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
                               {quiz.title}
                             </h3>
@@ -316,7 +316,7 @@ const StudentDashboard = () => {
                               {quiz.courseName}
                             </span>
                             <span>•</span>
-                            <span>{quiz.questions?.length || 0} Questions</span>
+                            <span className=''>{quiz.questions?.length || 0} Questions</span>
                             {quiz.attempted && (
                               <>
                                 <span>•</span>
